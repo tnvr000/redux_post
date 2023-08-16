@@ -1,14 +1,18 @@
 import { useSelector } from "react-redux";
+import PropTypes from 'prop-types'
 
 import { selectAllUsers } from "../users/usersSlice";
 
 const PostAuthor = ({ userId }) => {
-  console.log(userId);
   const users = useSelector(selectAllUsers);
-  const author = users.find(user => user.id == userId)
+  const author = users.find(user => user.id === userId)
   return (
     <span>by {author ? author.name : 'Unknown author'}</span>
   )
+}
+
+PostAuthor.propTypes = {
+  userId: PropTypes.string
 }
 
 export default PostAuthor
